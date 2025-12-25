@@ -35,50 +35,18 @@
     <h2 style="text-align: center; margin-bottom: 40px; color: var(--color-dark);">Explore Our Categories</h2>
     
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px;">
-        <!-- Static Categories for now -->
+        @foreach($categories as $category)
         <div class="card">
             <div style="height: 150px; background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                <span style="font-size: 3rem; color: #adb5bd;">⚙️</span>
+                <span style="font-size: 3rem; color: #adb5bd;">{{ $category->icon ?? '📦' }}</span>
             </div>
             <div class="card-body">
-                <h3 style="margin-top: 0;">Steel</h3>
-                <p style="color: var(--color-text-muted);">TMT, CRC, HR Sheets</p>
-                <a href="#" class="btn btn-outline" style="width: 100%; text-align: center;">View Prices</a>
+                <h3 style="margin-top: 0;">{{ $category->name }}</h3>
+                <p style="color: var(--color-text-muted);">View latest prices and trends</p>
+                <a href="{{ route('category.show', $category->slug) }}" class="btn btn-outline" style="width: 100%; text-align: center;">View Prices</a>
             </div>
         </div>
-
-        <div class="card">
-            <div style="height: 150px; background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                 <span style="font-size: 3rem; color: #adb5bd;">⚗️</span>
-            </div>
-            <div class="card-body">
-                <h3 style="margin-top: 0;">Chemicals</h3>
-                <p style="color: var(--color-text-muted);">Industrial Solvents, Acids</p>
-                <a href="#" class="btn btn-outline" style="width: 100%; text-align: center;">View Prices</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <div style="height: 150px; background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                 <span style="font-size: 3rem; color: #adb5bd;">🏗️</span>
-            </div>
-            <div class="card-body">
-                <h3 style="margin-top: 0;">Cement</h3>
-                <p style="color: var(--color-text-muted);">OPC, PPC, Slag</p>
-                <a href="#" class="btn btn-outline" style="width: 100%; text-align: center;">View Prices</a>
-            </div>
-        </div>
-        
-         <div class="card">
-            <div style="height: 150px; background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                 <span style="font-size: 3rem; color: #adb5bd;">⚡</span>
-            </div>
-            <div class="card-body">
-                <h3 style="margin-top: 0;">Energy</h3>
-                <p style="color: var(--color-text-muted);">Bitumen, Emulsion</p>
-                <a href="#" class="btn btn-outline" style="width: 100%; text-align: center;">View Prices</a>
-            </div>
-        </div>
+        @endforeach
     </div>
 </section>
 
